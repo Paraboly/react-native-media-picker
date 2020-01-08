@@ -34,6 +34,10 @@ target 'example' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  # It is recommended to use locally provided QBImagePicker pod, because it contains few improvements over original version.
+  pod 'QBImagePickerController', :path => '../node_modules/react-native-image-crop-picker/ios/QBImagePicker/QBImagePickerController.podspec'
+
+
   target 'exampleTests' do
     inherit! :search_paths
     # Pods for testing

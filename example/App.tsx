@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StatusBar, TouchableOpacity } from "react-native";
+import { View, Text, StatusBar, TouchableOpacity, Alert } from "react-native";
 
 import { MediaPicker } from "./lib/MediaPicker";
 
@@ -27,7 +27,10 @@ class App extends React.Component {
         >
           <Text>Open Media Picker</Text>
         </TouchableOpacity>
-        <MediaPicker ref={ref => (this.mediaPicker = ref)} />
+        <MediaPicker
+          ref={ref => (this.mediaPicker = ref)}
+          galleryOnPress={images => Alert.alert(JSON.stringify(images))}
+        />
       </View>
     );
   }

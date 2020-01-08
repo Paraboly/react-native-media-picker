@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, Alert } from "react-native";
 import {
   styles,
   _modalStyle,
@@ -8,12 +8,14 @@ import {
 } from "./MediaPicker.style";
 import { Modalize } from "react-native-modalize";
 import Icon from "react-native-dynamic-vector-icons";
+import ImagePicker, { Image } from "react-native-image-crop-picker";
 
 export interface IProps {
   cameraOnPress?: () => void;
-  galleryOnPress?: () => void;
+  galleryOnPress?: (images: Image | Image[]) => void;
   IconComponent: any;
   cameraText: string;
+  multiple: boolean;
   galleryText: string;
   cameraIconName: string;
   cameraIconType: string;
@@ -40,6 +42,7 @@ export class MediaPicker extends React.Component<IProps, IState> {
   modal = React.createRef<Modalize>();
 
   static defaultProps = {
+    multiple: true,
     cameraIconSize: 20,
     IconComponent: Icon,
     galleryIconSize: 23,
@@ -77,6 +80,23 @@ export class MediaPicker extends React.Component<IProps, IState> {
     if (this.modal.current) {
       this.modal.current.close();
     }
+  };
+
+  openGallery = () => {
+    return ImagePicker.openPicker({
+      multiple: this.props.multiple,
+      writeTempFile: true // iOS Only
+    });
+  };
+
+  handleGalleryPressed = () => {
+    this.openGallery()
+      .then(images => {
+        this.props.galleryOnPress && this.props.galleryOnPress(images);
+      })
+      .catch(err =>
+        Alert.alert("Something went wrong while picking images: ", err)
+      );
   };
 
   renderContent = () => {
@@ -127,7 +147,7 @@ export class MediaPicker extends React.Component<IProps, IState> {
                 galleryButtonSize,
                 galleryButtonBackgroundColor
               )}
-              onPress={galleryOnPress}
+              onPress={this.handleGalleryPressed}
             >
               <IconComponent
                 name={galleryIconName}
