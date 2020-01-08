@@ -1,11 +1,12 @@
 import React from "react";
-import { Text, TouchableOpacity, View, TextInput } from "react-native";
+import { Text, Image, TouchableOpacity, View } from "react-native";
 import { styles } from "./MediaPicker.style";
 import { Modalize } from "react-native-modalize";
+import Icon from "react-native-dynamic-vector-icons";
 
 export interface Props {
-  //   name: string;
-  //   enthusiasmLevel?: number;
+  cameraOnPress?: () => void;
+  galleryOnPress?: () => void;
 }
 
 interface State {
@@ -17,11 +18,6 @@ export class MediaPicker extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-
-    // if ((props.enthusiasmLevel || 0) <= 0) {
-    //   throw new Error("You could be a little more enthusiastic. :D");
-    // }
-
     // this.state = {
     //   enthusiasmLevel: props.enthusiasmLevel || 1
     // };
@@ -40,36 +36,77 @@ export class MediaPicker extends React.Component<Props, State> {
   };
 
   renderContent = () => {
+    const { cameraOnPress, galleryOnPress } = this.props;
     return (
       <View style={styles.content}>
-        <Text style={styles.content__subheading}>
-          {"Last step".toUpperCase()}
-        </Text>
-        <Text style={styles.content__heading}>Send the message?</Text>
-        <Text style={styles.content__description}>
-          Proin bibendum purus sit amet nibh pulvinar lobortis. Cras posuere
-          metus sit amet nulla ornare iaculis. Etiam nec leo tortor. Aliquam
-          dictum mi vitae suscipit placerat.
-        </Text>
-        <TextInput
-          style={styles.content__input}
-          placeholder="Type your username"
-        />
-
-        <TouchableOpacity
-          style={styles.content__button}
-          activeOpacity={0.9}
-          onPress={this.closeModal}
+        <View
+          style={{
+            marginTop: 16,
+            alignItems: "center",
+            justifyContent: "center"
+          }}
         >
-          <Text style={styles.content__buttonText}>{"Send".toUpperCase()}</Text>
-        </TouchableOpacity>
+          <View
+            style={{
+              width: "50%",
+              flexDirection: "row",
+              justifyContent: "space-evenly"
+            }}
+          >
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <TouchableOpacity
+                style={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: 25,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#fdfdfd"
+                }}
+                onPress={cameraOnPress}
+              >
+                <Icon name="camera" type="FontAwesome" color="#90a1fc" />
+              </TouchableOpacity>
+              <Text style={{ top: 3, color: "#fdfdfd" }}>Camera</Text>
+            </View>
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <TouchableOpacity
+                style={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: 25,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#fdfdfd"
+                }}
+                onPress={galleryOnPress}
+              >
+                <Icon
+                  name="md-photos"
+                  type="Ionicons"
+                  color="#90a1fc"
+                  size={23}
+                />
+              </TouchableOpacity>
+              <Text style={{ top: 3, color: "#fdfdfd" }}>Gallery</Text>
+            </View>
+          </View>
+        </View>
       </View>
     );
   };
 
   render() {
     return (
-      <Modalize ref={this.modal} adjustToContentHeight>
+      <Modalize
+        ref={this.modal}
+        modalStyle={{
+          backgroundColor: "#90a1fc",
+          borderTopLeftRadius: 32,
+          borderTopRightRadius: 32
+        }}
+        snapPoint={115}
+      >
         {this.renderContent()}
       </Modalize>
     );

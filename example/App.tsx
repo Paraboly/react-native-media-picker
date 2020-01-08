@@ -25,7 +25,7 @@ class App extends React.Component {
           }}
           onPress={() => this.mediaPicker.openModal()}
         >
-          <Text style={{ fontSize: 30, color: "blue" }}>Open Media Picker</Text>
+          <Text>Open Media Picker</Text>
         </TouchableOpacity>
         <MediaPicker ref={ref => (this.mediaPicker = ref)} />
       </View>
