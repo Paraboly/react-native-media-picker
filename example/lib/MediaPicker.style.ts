@@ -7,15 +7,49 @@ import {
 } from "react-native";
 
 interface Style {
-  content: ViewStyle;
+  container: ViewStyle;
+  containerGlue: ViewStyle;
+  buttonContainer: ViewStyle;
   content__heading: ViewStyle;
   content__button: ViewStyle;
   content__buttonText: TextStyle;
 }
 
+export const _modalStyle = (backgroundColor: string) => ({
+  backgroundColor,
+  borderTopLeftRadius: 32,
+  borderTopRightRadius: 32
+});
+
+export const _buttonStyle = (size: number, backgroundColor: string) => ({
+  width: size,
+  height: size,
+  backgroundColor,
+  alignItems: "center",
+  borderRadius: size / 2,
+  justifyContent: "center"
+});
+
+export const _buttonTextStyle = (color: string) => ({
+  top: 3,
+  color
+});
+
 export const styles = StyleSheet.create<Style>({
-  content: {
-    flex: 1
+  container: {
+    flex: 1,
+    marginTop: 16,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  containerGlue: {
+    width: "50%",
+    flexDirection: "row",
+    justifyContent: "space-evenly"
+  },
+  buttonContainer: {
+    alignItems: "center",
+    justifyContent: "center"
   },
   content__heading: {
     fontSize: 20,

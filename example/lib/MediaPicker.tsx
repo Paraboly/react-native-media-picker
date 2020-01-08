@@ -1,22 +1,66 @@
 import React from "react";
-import { Text, Image, TouchableOpacity, View } from "react-native";
-import { styles } from "./MediaPicker.style";
+import { Text, TouchableOpacity, View } from "react-native";
+import {
+  styles,
+  _modalStyle,
+  _buttonStyle,
+  _buttonTextStyle
+} from "./MediaPicker.style";
 import { Modalize } from "react-native-modalize";
 import Icon from "react-native-dynamic-vector-icons";
 
-export interface Props {
+export interface IProps {
   cameraOnPress?: () => void;
   galleryOnPress?: () => void;
+  IconComponent: any;
+  cameraText: string;
+  galleryText: string;
+  cameraIconName: string;
+  cameraIconType: string;
+  cameraIconSize: number;
+  backgroundColor: string;
+  cameraIconColor: string;
+  galleryIconName: string;
+  galleryIconType: string;
+  galleryIconSize: number;
+  cameraTextColor: string;
+  galleryTextColor: string;
+  cameraButtonSize: number;
+  galleryIconColor: string;
+  galleryButtonSize: number;
+  cameraButtonBackgroundColor: string;
+  galleryButtonBackgroundColor: string;
 }
 
-interface State {
+interface IState {
   //   enthusiasmLevel: number;
 }
 
-export class MediaPicker extends React.Component<Props, State> {
+export class MediaPicker extends React.Component<IProps, IState> {
   modal = React.createRef<Modalize>();
 
-  constructor(props: Props) {
+  static defaultProps = {
+    cameraIconSize: 20,
+    IconComponent: Icon,
+    galleryIconSize: 23,
+    cameraText: "Camera",
+    cameraButtonSize: 50,
+    galleryButtonSize: 50,
+    galleryText: "Gallery",
+    cameraIconName: "camera",
+    cameraIconColor: "#90a1fc",
+    backgroundColor: "#90a1fc",
+    cameraTextColor: "#fdfdfd",
+    galleryIconType: "Ionicons",
+    galleryIconColor: "#90a1fc",
+    galleryTextColor: "#fdfdfd",
+    galleryIconName: "md-photos",
+    cameraIconType: "FontAwesome",
+    cameraButtonBackgroundColor: "#fdfdfd",
+    galleryButtonBackgroundColor: "#fdfdfd"
+  };
+
+  constructor(props: IProps) {
     super(props);
     // this.state = {
     //   enthusiasmLevel: props.enthusiasmLevel || 1
@@ -36,60 +80,65 @@ export class MediaPicker extends React.Component<Props, State> {
   };
 
   renderContent = () => {
-    const { cameraOnPress, galleryOnPress } = this.props;
+    const {
+      cameraText,
+      galleryText,
+      cameraOnPress,
+      IconComponent,
+      galleryOnPress,
+      cameraIconName,
+      cameraIconType,
+      cameraIconSize,
+      cameraIconColor,
+      galleryIconName,
+      galleryIconType,
+      galleryIconSize,
+      cameraTextColor,
+      galleryIconColor,
+      cameraButtonSize,
+      galleryTextColor,
+      galleryButtonSize,
+      cameraButtonBackgroundColor,
+      galleryButtonBackgroundColor
+    } = this.props;
     return (
-      <View style={styles.content}>
-        <View
-          style={{
-            marginTop: 16,
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
-          <View
-            style={{
-              width: "50%",
-              flexDirection: "row",
-              justifyContent: "space-evenly"
-            }}
-          >
-            <View style={{ alignItems: "center", justifyContent: "center" }}>
-              <TouchableOpacity
-                style={{
-                  width: 50,
-                  height: 50,
-                  borderRadius: 25,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#fdfdfd"
-                }}
-                onPress={cameraOnPress}
-              >
-                <Icon name="camera" type="FontAwesome" color="#90a1fc" />
-              </TouchableOpacity>
-              <Text style={{ top: 3, color: "#fdfdfd" }}>Camera</Text>
-            </View>
-            <View style={{ alignItems: "center", justifyContent: "center" }}>
-              <TouchableOpacity
-                style={{
-                  width: 50,
-                  height: 50,
-                  borderRadius: 25,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#fdfdfd"
-                }}
-                onPress={galleryOnPress}
-              >
-                <Icon
-                  name="md-photos"
-                  type="Ionicons"
-                  color="#90a1fc"
-                  size={23}
-                />
-              </TouchableOpacity>
-              <Text style={{ top: 3, color: "#fdfdfd" }}>Gallery</Text>
-            </View>
+      <View style={styles.container}>
+        <View style={styles.containerGlue}>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={_buttonStyle(
+                cameraButtonSize,
+                cameraButtonBackgroundColor
+              )}
+              onPress={cameraOnPress}
+            >
+              <IconComponent
+                name={cameraIconName}
+                type={cameraIconType}
+                size={cameraIconSize}
+                color={cameraIconColor}
+              />
+            </TouchableOpacity>
+            <Text style={_buttonTextStyle(cameraTextColor)}>{cameraText}</Text>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={_buttonStyle(
+                galleryButtonSize,
+                galleryButtonBackgroundColor
+              )}
+              onPress={galleryOnPress}
+            >
+              <IconComponent
+                name={galleryIconName}
+                type={galleryIconType}
+                size={galleryIconSize}
+                color={galleryIconColor}
+              />
+            </TouchableOpacity>
+            <Text style={_buttonTextStyle(galleryTextColor)}>
+              {galleryText}
+            </Text>
           </View>
         </View>
       </View>
@@ -97,15 +146,13 @@ export class MediaPicker extends React.Component<Props, State> {
   };
 
   render() {
+    const { backgroundColor, ...rest } = this.props;
     return (
       <Modalize
         ref={this.modal}
-        modalStyle={{
-          backgroundColor: "#90a1fc",
-          borderTopLeftRadius: 32,
-          borderTopRightRadius: 32
-        }}
         snapPoint={115}
+        modalStyle={_modalStyle(backgroundColor)}
+        {...rest}
       >
         {this.renderContent()}
       </Modalize>
