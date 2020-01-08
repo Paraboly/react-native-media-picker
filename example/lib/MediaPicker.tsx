@@ -95,7 +95,10 @@ export class MediaPicker extends React.Component<IProps, IState> {
         this.props.galleryOnPress && this.props.galleryOnPress(images);
       })
       .catch(err =>
-        Alert.alert("Something went wrong while picking images: ", err)
+        Alert.alert(
+          "Something went wrong while picking images: ",
+          JSON.stringify(err)
+        )
       );
   };
 
