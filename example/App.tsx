@@ -13,20 +13,19 @@ class App extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <StatusBar barStyle="dark-content" />
         <TouchableOpacity
           style={{
             height: 50,
             width: 150,
-            backgroundColor: "red",
             borderRadius: 16,
-            marginTop: "30%"
+            marginTop: "30%",
+            alignItems: "center",
+            backgroundColor: "red",
+            justifyContent: "center"
           }}
           onPress={() => this.mediaPicker.openModal()}
         >
-          <Text style={{ alignItems: "center", justifyContent: "center" }}>
-            Open Media Picker
-          </Text>
+          <Text style={{ fontSize: 30, color: "blue" }}>Open Media Picker</Text>
         </TouchableOpacity>
         <MediaPicker ref={ref => (this.mediaPicker = ref)} />
       </View>
