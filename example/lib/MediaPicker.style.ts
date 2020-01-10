@@ -1,10 +1,4 @@
-import {
-  ViewStyle,
-  TextStyle,
-  ImageStyle,
-  StyleSheet,
-  Image
-} from "react-native";
+import { ViewStyle, TextStyle, StyleSheet } from "react-native";
 
 interface Style {
   container: ViewStyle;

@@ -8,14 +8,15 @@ import {
 } from "./MediaPicker.style";
 import { Modalize } from "react-native-modalize";
 import Icon from "react-native-dynamic-vector-icons";
+import { isIPhoneXFamily } from "@freakycoder/react-native-helpers";
 import ImagePicker, { Image } from "react-native-image-crop-picker";
 
 export interface IProps {
-  cameraOnPress?: () => void;
+  cameraOnPress?: (image: Image | Image[]) => void;
   galleryOnPress?: (images: Image | Image[]) => void;
   IconComponent: any;
-  cameraText: string;
   multiple: boolean;
+  cameraText: string;
   galleryText: string;
   cameraIconName: string;
   cameraIconType: string;
@@ -63,13 +64,6 @@ export class MediaPicker extends React.Component<IProps, IState> {
     galleryButtonBackgroundColor: "#fdfdfd"
   };
 
-  constructor(props: IProps) {
-    super(props);
-    // this.state = {
-    //   enthusiasmLevel: props.enthusiasmLevel || 1
-    // };
-  }
-
   openModal = () => {
     if (this.modal.current) {
       this.modal.current.open();
@@ -89,6 +83,21 @@ export class MediaPicker extends React.Component<IProps, IState> {
     });
   };
 
+  openCamera = () => {
+    return ImagePicker.openCamera({
+      mediaType: "any",
+      writeTempFile: true // iOS Only
+    });
+  };
+
+  handleCameraPressed = () => {
+    this.openCamera()
+      .then(
+        image => this.props.cameraOnPress && this.props.cameraOnPress(image)
+      )
+      .catch(err => this.props.cameraOnPress && this.props.cameraOnPress(err));
+  };
+
   handleGalleryPressed = () => {
     this.openGallery()
       .then(
@@ -101,11 +110,12 @@ export class MediaPicker extends React.Component<IProps, IState> {
 
   renderContent = () => {
     const {
+      videoText,
       cameraText,
       galleryText,
       cameraOnPress,
-      IconComponent,
       galleryOnPress,
+      IconComponent,
       cameraIconName,
       cameraIconType,
       cameraIconSize,
@@ -130,7 +140,7 @@ export class MediaPicker extends React.Component<IProps, IState> {
                 cameraButtonSize,
                 cameraButtonBackgroundColor
               )}
-              onPress={cameraOnPress}
+              onPress={this.handleCameraPressed}
             >
               <IconComponent
                 name={cameraIconName}
@@ -170,7 +180,7 @@ export class MediaPicker extends React.Component<IProps, IState> {
     return (
       <Modalize
         ref={this.modal}
-        snapPoint={115}
+        snapPoint={isIPhoneXFamily() ? 115 : 100}
         modalStyle={_modalStyle(backgroundColor)}
         {...rest}
       >
