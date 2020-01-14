@@ -2,7 +2,7 @@
 
 [![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/Paraboly/react-native-media-picker)
 
-[![React Native Library Boiler Plate](https://img.shields.io/badge/-React%20Native%20Library%20Boilerplate-lightgrey?style=for-the-badge)](https://github.com/Paraboly/react-native-media-picker)
+[![Easy to use media picker modal for React Native by Paraboly](https://img.shields.io/badge/-Easy%20to%20use%20media%20picker%20modal%20for%20React%20Native%20by%20Paraboly-lightgrey?style=for-the-badge)](https://github.com/Paraboly/react-native-media-picker)
 
 [![npm version](https://img.shields.io/npm/v/@paraboly/react-native-media-picker.svg?style=for-the-badge)](https://www.npmjs.com/package/@paraboly/react-native-media-picker)
 [![npm](https://img.shields.io/npm/dt/@paraboly/react-native-media-picker.svg?style=for-the-badge)](https://www.npmjs.com/package/@paraboly/react-native-media-picker)
