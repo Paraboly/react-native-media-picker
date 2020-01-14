@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   View,
   Text,
@@ -7,7 +7,6 @@ import {
   SafeAreaView,
   TouchableOpacity
 } from "react-native";
-
 import MediaPicker from "@paraboly/react-native-media-picker";
 
 console.disableYellowBox = true;
