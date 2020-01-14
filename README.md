@@ -63,6 +63,10 @@ You can check the example :) Put your own logic for galleryOnPress or cameraOnPr
 <MediaPicker
   multiple
   ref={ref => (this.mediaPicker = ref)}
+  cameraOnPress={(image: any) => {
+      console.log(JSON.stringify(image));
+      this.setState({ image });
+  }}
   galleryOnPress={(images: any) => {
     this.setState({
       image: null,
