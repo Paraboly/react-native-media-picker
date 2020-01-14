@@ -5,9 +5,10 @@ import {
   Image,
   FlatList,
   SafeAreaView,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from "react-native";
-import MediaPicker from "@paraboly/react-native-media-picker";
+import MediaPicker from "./lib/MediaPicker";
 
 console.disableYellowBox = true;
 
@@ -123,6 +124,10 @@ class App extends React.Component<IProps, IState> {
             //     mime: image.mime
             //   }
             // });
+          }}
+          cameraOnPress={(image: any) => {
+            Alert.alert(JSON.stringify(image));
+            this.setState({ image });
           }}
         />
       </SafeAreaView>
