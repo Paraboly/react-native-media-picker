@@ -39,7 +39,7 @@ interface IState {
   //   enthusiasmLevel: number;
 }
 
-export class MediaPicker extends React.Component<IProps, IState> {
+export default class MediaPicker extends React.Component<IProps, IState> {
   modal = React.createRef<Modalize>();
 
   static defaultProps = {
@@ -77,6 +77,7 @@ export class MediaPicker extends React.Component<IProps, IState> {
   };
 
   openGallery = () => {
+    this.closeModal();
     return ImagePicker.openPicker({
       multiple: this.props.multiple,
       writeTempFile: true // iOS Only
@@ -84,6 +85,7 @@ export class MediaPicker extends React.Component<IProps, IState> {
   };
 
   openCamera = () => {
+    this.closeModal();
     return ImagePicker.openCamera({
       mediaType: "any",
       writeTempFile: true // iOS Only
@@ -110,7 +112,6 @@ export class MediaPicker extends React.Component<IProps, IState> {
 
   renderContent = () => {
     const {
-      videoText,
       cameraText,
       galleryText,
       cameraOnPress,

@@ -1,22 +1,17 @@
-<img alt="React Native Library Boilerplate" src="assets/logo.png" width="1050"/>
+<img alt="React Native Media Picker by Paraboly" src="assets/logo.png" width="1050"/>
 
+[![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/Paraboly/react-native-media-picker)
 
-# WORK IN PROGRESS ! DO NOT USE THIS LIBRARY FOR NOW !
+[![React Native Library Boiler Plate](https://img.shields.io/badge/-React%20Native%20Library%20Boilerplate-lightgrey?style=for-the-badge)](https://github.com/Paraboly/react-native-media-picker)
 
-[![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/WrathChaos/react-native-library-boilerplate)
-
-
-[![React Native Library Boiler Plate](https://img.shields.io/badge/-React%20Native%20Library%20Boilerplate-lightgrey?style=for-the-badge)](https://github.com/WrathChaos/react-native-library-boilerplate)
-
-
-[![npm version](https://img.shields.io/npm/v/react-native-library-boilerplate.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-library-boilerplate)
-[![npm](https://img.shields.io/npm/dt/react-native-library-boilerplate.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-library-boilerplate)
+[![npm version](https://img.shields.io/npm/v/@paraboly/react-native-media-picker.svg?style=for-the-badge)](https://www.npmjs.com/package/@paraboly/react-native-media-picker)
+[![npm](https://img.shields.io/npm/dt/@paraboly/react-native-media-picker.svg?style=for-the-badge)](https://www.npmjs.com/package/@paraboly/react-native-media-picker)
 ![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg?style=for-the-badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
 <p align="center">
-  <img alt="React Native Library Boilerplate"
+  <img alt="React Native Media Picker by Paraboly"
         src="assets/Screenshots/JSLibraryBoilerplate.png" />
 </p>
 
@@ -25,7 +20,7 @@
 Add the dependency:
 
 ```ruby
-npm i react-native-library-boilerplate
+npm i @paraboly/react-native-media-picker
 ```
 
 ## Peer Dependencies
@@ -35,6 +30,13 @@ npm i react-native-library-boilerplate
 ```js
 "react": ">= 16.x.x",
 "react-native": ">= 0.55.x",
+"@freakycoder/react-native-helpers": ">= 0.1.2",
+"react-native-dynamic-vector-icons": ">= 0.2.1",
+"react-native-gesture-handler": ">= 1.5.3",
+"react-native-image-crop-picker": ">= 0.26.2",
+"react-native-modalize": ">= 1.3.6",
+"react-native-reanimated": ">= 1.4.0",
+"react-native-vector-icons": ">= 6.6.0"
 ```
 
 # Usage
@@ -42,23 +44,86 @@ npm i react-native-library-boilerplate
 ## Import
 
 ```js
-import { Component1, Component2 } from "react-native-library-boilerplate";
+import MediaPicker from "@paraboly/react-native-media-picker";
 ```
 
-## Component1 Usage
+## Basic Usage
+
+```jsx
+<MediaPicker>
+```
+
+## Advanced Usage
+
+```jsx
+<MediaPicker
+  multiple
+  ref={ref => (this.mediaPicker = ref)}
+  galleryOnPress={(images: any) => {
+    this.setState({
+      image: null,
+      images: images.map((image: any) => {
+        console.log("received image", image);
+        return {
+          uri: image.path,
+          width: image.width,
+          height: image.height,
+          mime: image.mime
+        };
+      })
+    });
+    // ? Single Image (Multiple = false)
+    // this.setState({
+    //   image: {
+    //     uri: image.path,
+    //     width: image.width,
+    //     height: image.height,
+    //     mime: image.mime
+    //   }
+    // });
+  }}
+/>
+```
+
+## Open/Close The MediaPicker Modal
+
+#### Open
 
 ```js
-<Component1 />
+this.mediaPicker.openModal();
+```
+
+#### Close
+
+```js
+this.mediaPicker.closeModal();
 ```
 
 # Configuration - Props
 
-| Property |  Type   | Default | Description                                             |
-| -------- | :-----: | :-----: | ------------------------------------------------------- |
-| outline  | boolean |  true   | make the button outline                                 |
-| solid    | boolean |  false  | make the button with a solid background and a shadow    |
-| gradient | boolean |  false  | make the button with a gradient background and a shadow |
-| width    | number  |   150   | change the button's width                               |
+| Property                     |   Type    |   Default   | Description                                                                  |
+| ---------------------------- | :-------: | :---------: | ---------------------------------------------------------------------------- |
+| IconComponent                | component |    Icon     | set your own Icon component such as Icon from react-native-vector-icons      |
+| multiple                     |  boolean  |    true     | change the picking media's as single or multiple at once                     |
+| cameraText                   |  string   |   Camera    | change the camera button's text                                              |
+| galleryText                  |  string   |   Gallery   | change the gallery button's text                                             |
+| backgroundColor              |   color   |   #90a1fc   | change the modal's background color                                          |
+| cameraOnPress                | function  |   default   | set your own logic when camera is on pressed **(please check the example)**  |
+| galleryOnPress               | function  |   default   | set your own logic when gallery is on pressed **(please check the example)** |
+| cameraIconName               |  string   |   camera    | change the camera's icon name                                                |
+| cameraIconType               |  string   | FontAwesome | change the camera's icon type                                                |
+| cameraIconColor              |   color   |   #fdfdfd   | change the camera's icon color                                               |
+| cameraIconSize               |  number   |     20      | change the camera's icon size                                                |
+| galleryIconName              |  string   |  md-photos  | change the gallery's icon name                                               |
+| galleryIconType              |  string   |  Ionicons   | change the gallery's icon type                                               |
+| galleryIconColor             |   color   |   #fdfdfd   | change the gallery's icon color                                              |
+| galleryIconSize              |  number   |     20      | change the gallery's icon size                                               |
+| cameraButtonBackgroundColor  |   color   |   #fdfdfd   | change the camera button's background color                                  |
+| galleryButtonBackgroundColor |   color   |   #fdfdfd   | change the gallery button's background color                                 |
+| cameraButtonSize             |  number   |     50      | change the camera button's whole size                                        |
+| galleryButtonSize            |  number   |     50      | change the gallery button's whole size                                       |
+| cameraTextColor              |   color   |   #fdfdfd   | change the camera button's text color                                        |
+| galleryTextColor             |   color   |   #fdfdfd   | change the gallery button's text color                                       |
 
 ## Future Plans
 
@@ -75,4 +140,4 @@ FreakyCoder, kurayogun@gmail.com
 
 ## License
 
-React Native Library Boilerplate is available under the MIT license. See the LICENSE file for more info.
+React Native Media Picker by Paraboly is available under the MIT license. See the LICENSE file for more info.

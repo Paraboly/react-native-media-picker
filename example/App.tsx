@@ -8,7 +8,7 @@ import {
   TouchableOpacity
 } from "react-native";
 
-import { MediaPicker } from "./lib/MediaPicker";
+import MediaPicker from "@paraboly/react-native-media-picker";
 
 interface IProps {}
 
@@ -40,12 +40,12 @@ class App extends React.Component<IProps, IState> {
               <Image
                 source={image}
                 key={image.path}
-                borderRadius={16}
                 style={{
-                  width: 300,
-                  height: 300,
+                  margin: 16,
+                  width: 200,
+                  height: 200,
                   borderRadius: 16,
-                  resizeMode: "contain"
+                  overflow: "hidden"
                 }}
               />
             ))}
@@ -69,20 +69,20 @@ class App extends React.Component<IProps, IState> {
         <MediaPicker
           multiple
           ref={ref => (this.mediaPicker = ref)}
-          galleryOnPress={(image: any) => {
-            console.log("Image: ", image);
+          galleryOnPress={(images: any) => {
             this.setState({
               image: null,
-              images: images.map((i: any) => {
-                console.log("received image", i);
+              images: images.map((image: any) => {
+                console.log("received image", image);
                 return {
-                  uri: i.path,
-                  width: i.width,
-                  height: i.height,
-                  mime: i.mime
+                  uri: image.path,
+                  width: image.width,
+                  height: image.height,
+                  mime: image.mime
                 };
               })
             });
+
             // ? Single Image (Multiple = false)
             // this.setState({
             //   image: {
