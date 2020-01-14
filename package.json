@@ -1,8 +1,8 @@
 {
   "name": "@paraboly/react-native-media-picker",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Easy to use media picker modal for React Native by Paraboly",
-  "main": "./lib/MediaPicker.tsx",
+  "main": "./MediaPicker.js",
   "repository": "git@github.com:WrathChaos/@paraboly/react-native-media-picker.git",
   "author": "FreakyCoder <kurayogun@gmail.com>",
   "license": "MIT",
@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "build": "cd lib && tsc && cp ../package.json ../build/dist/ && Echo Build completed!",
-    "publish": "cd build/dist && npm publish && echo Package published!"
+    "publish": "cd build/dist && npm publish --access public && echo Package published!"
   },
   "dependencies": {
     "@freakycoder/react-native-helpers": "^0.1.2",
