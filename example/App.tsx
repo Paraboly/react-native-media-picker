@@ -3,12 +3,14 @@ import {
   View,
   Text,
   Image,
-  ScrollView,
+  FlatList,
   SafeAreaView,
   TouchableOpacity
 } from "react-native";
 
 import MediaPicker from "@paraboly/react-native-media-picker";
+
+console.disableYellowBox = true;
 
 interface IProps {}
 
@@ -24,9 +26,29 @@ class App extends React.Component<IProps, IState> {
     this.mediaPicker = React.createRef<MediaPicker>();
     this.state = {
       image: null,
-      images: null
+      images: []
     };
   }
+
+  renderItem = data => {
+    const { item, index } = data;
+
+    return (
+      <TouchableOpacity onPress={() => {}}>
+        <Image
+          key={item.path}
+          source={item}
+          style={{
+            margin: 16,
+            width: 200,
+            height: 200,
+            borderRadius: 16,
+            overflow: "hidden"
+          }}
+        />
+      </TouchableOpacity>
+    );
+  };
 
   render() {
     const { images } = this.state;
@@ -34,38 +56,48 @@ class App extends React.Component<IProps, IState> {
       <SafeAreaView
         style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
       >
-        <ScrollView style={{ height: 250 }}>
-          {images &&
-            images.map((image: any) => (
-              <Image
-                source={image}
-                key={image.path}
-                style={{
-                  margin: 16,
-                  width: 200,
-                  height: 200,
-                  borderRadius: 16,
-                  overflow: "hidden"
-                }}
-              />
-            ))}
-        </ScrollView>
-        <View style={{ flex: 1 }}>
-          <TouchableOpacity
-            style={{
-              height: 50,
-              width: 150,
-              borderRadius: 16,
-              marginTop: "30%",
-              alignItems: "center",
-              backgroundColor: "red",
-              justifyContent: "center"
-            }}
-            onPress={() => this.mediaPicker.openModal()}
-          >
-            <Text>Open Media Picker</Text>
-          </TouchableOpacity>
+        <View
+          style={{
+            height: 250,
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <FlatList
+            horizontal
+            data={images}
+            renderItem={this.renderItem.bind(this)}
+          />
         </View>
+        <TouchableOpacity
+          style={{
+            height: 50,
+            width: 200,
+            top: "10%",
+            borderRadius: 16,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#f03941",
+            shadowRadius: 8,
+            shadowOpacity: 0.3,
+            shadowColor: "#757575",
+            shadowOffset: {
+              width: 0,
+              height: 3
+            }
+          }}
+          onPress={() => this.mediaPicker.openModal()}
+        >
+          <Text
+            style={{
+              color: "#fdfdfd",
+              fontSize: 16,
+              fontWeight: "600"
+            }}
+          >
+            Open Media Picker
+          </Text>
+        </TouchableOpacity>
         <MediaPicker
           multiple
           ref={ref => (this.mediaPicker = ref)}

@@ -95,18 +95,23 @@ export default class MediaPicker extends React.Component<IProps, IState> {
   handleCameraPressed = () => {
     this.openCamera()
       .then(
-        image => this.props.cameraOnPress && this.props.cameraOnPress(image)
+        (image: any) =>
+          this.props.cameraOnPress && this.props.cameraOnPress(image)
       )
-      .catch(err => this.props.cameraOnPress && this.props.cameraOnPress(err));
+      .catch(
+        (err: any) => this.props.cameraOnPress && this.props.cameraOnPress(err)
+      );
   };
 
   handleGalleryPressed = () => {
     this.openGallery()
       .then(
-        images => this.props.galleryOnPress && this.props.galleryOnPress(images)
+        (images: any) =>
+          this.props.galleryOnPress && this.props.galleryOnPress(images)
       )
       .catch(
-        err => this.props.galleryOnPress && this.props.galleryOnPress(err)
+        (err: any) =>
+          this.props.galleryOnPress && this.props.galleryOnPress(err)
       );
   };
 
@@ -137,10 +142,10 @@ export default class MediaPicker extends React.Component<IProps, IState> {
         <View style={styles.containerGlue}>
           <View style={styles.buttonContainer}>
             <TouchableOpacity
-              style={_buttonStyle(
-                cameraButtonSize,
-                cameraButtonBackgroundColor
-              )}
+              style={[
+                styles.center,
+                _buttonStyle(cameraButtonSize, cameraButtonBackgroundColor)
+              ]}
               onPress={this.handleCameraPressed}
             >
               <IconComponent
@@ -154,10 +159,10 @@ export default class MediaPicker extends React.Component<IProps, IState> {
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity
-              style={_buttonStyle(
-                galleryButtonSize,
-                galleryButtonBackgroundColor
-              )}
+              style={[
+                styles.center,
+                _buttonStyle(galleryButtonSize, galleryButtonBackgroundColor)
+              ]}
               onPress={this.handleGalleryPressed}
             >
               <IconComponent

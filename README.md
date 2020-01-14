@@ -12,7 +12,9 @@
 
 <p align="center">
   <img alt="React Native Media Picker by Paraboly"
-        src="assets/Screenshots/JSLibraryBoilerplate.png" />
+        src="assets/Screenshots/example.png" />
+  <img alt="React Native Media Picker by Paraboly"
+        src="assets/Screenshots/example.gif" />
 </p>
 
 # Installation
@@ -54,6 +56,8 @@ import MediaPicker from "@paraboly/react-native-media-picker";
 ```
 
 ## Advanced Usage
+
+You can check the example :) Put your own logic for galleryOnPress or cameraOnPress both returns the callback of the images.
 
 ```jsx
 <MediaPicker
@@ -129,10 +133,6 @@ this.mediaPicker.closeModal();
 
 - [x] ~~LICENSE~~
 - [ ] Write an article about the lib on Medium
-
-# Change Log
-
-Change log will be here !
 
 ## Author
 

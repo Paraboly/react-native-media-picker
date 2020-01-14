@@ -1,11 +1,12 @@
 import { ViewStyle, TextStyle, StyleSheet } from "react-native";
 
 interface Style {
+  center: ViewStyle;
   container: ViewStyle;
   containerGlue: ViewStyle;
+  content__button: ViewStyle;
   buttonContainer: ViewStyle;
   content__heading: ViewStyle;
-  content__button: ViewStyle;
   content__buttonText: TextStyle;
 }
 
@@ -19,9 +20,7 @@ export const _buttonStyle = (size: number, backgroundColor: string) => ({
   width: size,
   height: size,
   backgroundColor,
-  alignItems: "center",
-  borderRadius: size / 2,
-  justifyContent: "center"
+  borderRadius: size / 2
 });
 
 export const _buttonTextStyle = (color: string) => ({
@@ -33,6 +32,10 @@ export const styles = StyleSheet.create<Style>({
   container: {
     flex: 1,
     marginTop: 16,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  center: {
     alignItems: "center",
     justifyContent: "center"
   },
