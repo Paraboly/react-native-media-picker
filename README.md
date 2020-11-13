@@ -62,10 +62,10 @@ You can check the example :) Put your own logic for galleryOnPress or cameraOnPr
 ```jsx
 <MediaPicker
   multiple
-  ref={ref => (this.mediaPicker = ref)}
+  ref={(ref) => (this.mediaPicker = ref)}
   cameraOnPress={(image: any) => {
-      console.log(JSON.stringify(image));
-      this.setState({ image });
+    console.log(JSON.stringify(image));
+    this.setState({ image });
   }}
   galleryOnPress={(images: any) => {
     this.setState({
@@ -76,9 +76,9 @@ You can check the example :) Put your own logic for galleryOnPress or cameraOnPr
           uri: image.path,
           width: image.width,
           height: image.height,
-          mime: image.mime
+          mime: image.mime,
         };
-      })
+      }),
     });
     // ? Single Image (Multiple = false)
     // this.setState({
@@ -132,6 +132,7 @@ this.mediaPicker.closeModal();
 | galleryButtonSize            |  number   |     50      | change the gallery button's whole size                                       |
 | cameraTextColor              |   color   |   #fdfdfd   | change the camera button's text color                                        |
 | galleryTextColor             |   color   |   #fdfdfd   | change the gallery button's text color                                       |
+| compressImageQuality         |  number   |     0.8     | change the quality of your photo                                             |
 
 ## Future Plans
 
