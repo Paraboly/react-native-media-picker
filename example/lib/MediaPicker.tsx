@@ -63,7 +63,7 @@ export default class MediaPicker extends React.Component<IProps, IState> {
     cameraIconType: "FontAwesome",
     cameraButtonBackgroundColor: "#fdfdfd",
     galleryButtonBackgroundColor: "#fdfdfd",
-    compressImageQuality: 0.8,
+    compressImageQuality: 0.5,
   };
 
   openModal = () => {
