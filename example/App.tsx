@@ -6,7 +6,7 @@ import {
   FlatList,
   SafeAreaView,
   TouchableOpacity,
-  Alert
+  Alert,
 } from "react-native";
 import MediaPicker from "./lib/MediaPicker";
 
@@ -26,11 +26,11 @@ class App extends React.Component<IProps, IState> {
     this.mediaPicker = React.createRef<MediaPicker>();
     this.state = {
       image: null,
-      images: []
+      images: [],
     };
   }
 
-  renderItem = data => {
+  renderItem = (data) => {
     const { item, index } = data;
 
     return (
@@ -43,7 +43,7 @@ class App extends React.Component<IProps, IState> {
             width: 200,
             height: 200,
             borderRadius: 16,
-            overflow: "hidden"
+            overflow: "hidden",
           }}
         />
       </TouchableOpacity>
@@ -60,7 +60,7 @@ class App extends React.Component<IProps, IState> {
           style={{
             height: 250,
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <FlatList
@@ -83,8 +83,8 @@ class App extends React.Component<IProps, IState> {
             shadowColor: "#757575",
             shadowOffset: {
               width: 0,
-              height: 3
-            }
+              height: 3,
+            },
           }}
           onPress={() => this.mediaPicker.openModal()}
         >
@@ -92,7 +92,7 @@ class App extends React.Component<IProps, IState> {
             style={{
               color: "#fdfdfd",
               fontSize: 16,
-              fontWeight: "600"
+              fontWeight: "600",
             }}
           >
             Open Media Picker
@@ -100,7 +100,8 @@ class App extends React.Component<IProps, IState> {
         </TouchableOpacity>
         <MediaPicker
           multiple
-          ref={ref => (this.mediaPicker = ref)}
+          compressImageQuality={0.5}
+          ref={(ref) => (this.mediaPicker = ref)}
           galleryOnPress={(images: any) => {
             this.setState({
               image: null,
@@ -110,9 +111,9 @@ class App extends React.Component<IProps, IState> {
                   uri: image.path,
                   width: image.width,
                   height: image.height,
-                  mime: image.mime
+                  mime: image.mime,
                 };
-              })
+              }),
             });
 
             // ? Single Image (Multiple = false)

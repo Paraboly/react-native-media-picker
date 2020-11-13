@@ -4,7 +4,7 @@ import {
   styles,
   _modalStyle,
   _buttonStyle,
-  _buttonTextStyle
+  _buttonTextStyle,
 } from "./MediaPicker.style";
 import { Modalize } from "react-native-modalize";
 import Icon from "react-native-dynamic-vector-icons";
@@ -33,6 +33,7 @@ export interface IProps {
   galleryButtonSize: number;
   cameraButtonBackgroundColor: string;
   galleryButtonBackgroundColor: string;
+  compressImageQuality: number;
 }
 
 interface IState {
@@ -61,7 +62,8 @@ export default class MediaPicker extends React.Component<IProps, IState> {
     galleryIconName: "md-photos",
     cameraIconType: "FontAwesome",
     cameraButtonBackgroundColor: "#fdfdfd",
-    galleryButtonBackgroundColor: "#fdfdfd"
+    galleryButtonBackgroundColor: "#fdfdfd",
+    compressImageQuality: 0.8,
   };
 
   openModal = () => {
@@ -80,7 +82,8 @@ export default class MediaPicker extends React.Component<IProps, IState> {
     this.closeModal();
     return ImagePicker.openPicker({
       multiple: this.props.multiple,
-      writeTempFile: true // iOS Only
+      writeTempFile: true, // iOS Only
+      compressImageQuality: this.props.compressImageQuality,
     });
   };
 
@@ -88,7 +91,8 @@ export default class MediaPicker extends React.Component<IProps, IState> {
     this.closeModal();
     return ImagePicker.openCamera({
       mediaType: "any",
-      writeTempFile: true // iOS Only
+      writeTempFile: true, // iOS Only
+      compressImageQuality: this.props.compressImageQuality,
     });
   };
 
@@ -135,7 +139,7 @@ export default class MediaPicker extends React.Component<IProps, IState> {
       galleryTextColor,
       galleryButtonSize,
       cameraButtonBackgroundColor,
-      galleryButtonBackgroundColor
+      galleryButtonBackgroundColor,
     } = this.props;
     return (
       <View style={styles.container}>
@@ -144,7 +148,7 @@ export default class MediaPicker extends React.Component<IProps, IState> {
             <TouchableOpacity
               style={[
                 styles.center,
-                _buttonStyle(cameraButtonSize, cameraButtonBackgroundColor)
+                _buttonStyle(cameraButtonSize, cameraButtonBackgroundColor),
               ]}
               onPress={this.handleCameraPressed}
             >
@@ -161,7 +165,7 @@ export default class MediaPicker extends React.Component<IProps, IState> {
             <TouchableOpacity
               style={[
                 styles.center,
-                _buttonStyle(galleryButtonSize, galleryButtonBackgroundColor)
+                _buttonStyle(galleryButtonSize, galleryButtonBackgroundColor),
               ]}
               onPress={this.handleGalleryPressed}
             >
