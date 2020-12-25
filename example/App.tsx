@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import MediaPicker from "./lib/MediaPicker";
+import MediaPicker from "./build/dist/MediaPicker";
 
 console.disableYellowBox = true;
 

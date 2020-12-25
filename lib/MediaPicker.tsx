@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, TouchableOpacity, View, Alert } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import {
   styles,
   _modalStyle,
@@ -36,9 +36,7 @@ export interface IProps {
   compressImageQuality: number;
 }
 
-interface IState {
-  //   enthusiasmLevel: number;
-}
+interface IState {}
 
 export default class MediaPicker extends React.Component<IProps, IState> {
   modal = React.createRef<Modalize>();
@@ -123,8 +121,6 @@ export default class MediaPicker extends React.Component<IProps, IState> {
     const {
       cameraText,
       galleryText,
-      cameraOnPress,
-      galleryOnPress,
       IconComponent,
       cameraIconName,
       cameraIconType,

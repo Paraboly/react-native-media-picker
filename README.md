@@ -30,15 +30,12 @@ npm i @paraboly/react-native-media-picker
 ###### IMPORTANT! You need install them
 
 ```js
-"react": ">= 16.x.x",
-"react-native": ">= 0.55.x",
 "@freakycoder/react-native-helpers": ">= 0.1.2",
-"react-native-dynamic-vector-icons": ">= 0.2.1",
 "react-native-gesture-handler": ">= 1.5.3",
 "react-native-image-crop-picker": ">= 0.26.2",
-"react-native-modalize": ">= 1.3.6",
-"react-native-reanimated": ">= 1.4.0",
-"react-native-vector-icons": ">= 6.6.0"
+"react-native-modalize": ">= 2.0.0",
+"react-native-vector-icons": ">= 6.6.0",
+"react-native-dynamic-vector-icons": ">= 0.2.1",
 ```
 
 # Usage
