@@ -674,6 +674,11 @@
   resolved "https://registry.yarnpkg.com/@freakycoder/react-native-helpers/-/react-native-helpers-0.1.2.tgz#a96a919b15cbd0ef0e2ed96e87149dd0b0bd9613"
   integrity sha512-iRmGZKRNvdGmaEyHJnpqqwSfLSFf+y2wCWcV0VpMUl52zvGmivJ5Zpw9wEnmgw4u5oXFkRD0NC/30rdUuDa9wg==
 
+"@freakycoder/react-native-helpers@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@freakycoder/react-native-helpers/-/react-native-helpers-1.0.1.tgz#e910cbc22bfcd7d7979d6dd438bb6fa41b86374c"
+  integrity sha512-qKYcSD5mFQTL1J6AfwrQGdZ+5+Imf/zKAN9es+JXWGDQi+mpHQWOiNJXkeLPEWvx1izIaX9RyIYCBNa9SufXFw==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -5176,6 +5181,11 @@ react-native-modalize@^1.3.6:
   resolved "https://registry.yarnpkg.com/react-native-modalize/-/react-native-modalize-1.3.6.tgz#1a8651f673dbaccb9ebef908688bbd72b7790470"
   integrity sha512-omYD+bPpugO7XPZ4pvPIaltw8d4Es0ZcRfu8VVslYAJT74t5IxSd6NrtL3nw/i+TKZo+CTdK4d0hbgBiyt+mMw==
 
+react-native-modalize@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/react-native-modalize/-/react-native-modalize-2.0.8.tgz#5dcb2c56d82e3dbd271582f832e7e02ae4cbb503"
+  integrity sha512-OKdpFVExEe4YM2uFHL/aStS9p0JaC6gBupjaW1QVHkGq22T2ASYwkhDvTnMS8BLOLWPx2fC3xEBzOcn2rh7EYw==
+
 react-native-reanimated@^1.4.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.7.0.tgz#896db2576552ac59d288a1f6c7f00afc171f240c"
@@ -6573,9 +6583,9 @@ xtend@~4.0.1:
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
 y18n@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
-  integrity sha1-bRX7qITAhnnA136I53WegR4H+kE=
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.2.tgz#85c901bd6470ce71fc4bb723ad209b70f7f28696"
+  integrity sha512-uGZHXkHnhF0XeeAPgnKfPv1bgKAYyVvmNL1xlKsPYZPaIHxGti2hHqvOCQv71XMsLxu1QjergkqogUnms5D3YQ==
 
 "y18n@^3.2.1 || ^4.0.0", y18n@^4.0.0:
   version "4.0.0"
