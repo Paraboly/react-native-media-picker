@@ -31,11 +31,30 @@ npm i @paraboly/react-native-media-picker
 
 ```js
 "@freakycoder/react-native-helpers": ">= 0.1.2",
-"react-native-gesture-handler": ">= 1.5.3",
 "react-native-image-crop-picker": ">= 0.26.2",
 "react-native-modalize": ">= 2.0.0",
 "react-native-vector-icons": ">= 6.6.0",
 "react-native-dynamic-vector-icons": ">= 0.2.1",
+```
+
+## iOS & Android Permissions
+
+### iOS
+
+```plist
+<key>NSCameraUsageDescription</key>
+<string>This allows us to capture and use the the captured photo</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>This allows us to show/pick a photo from your library</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>This allows us to show/pick a photo from your library</string>
+```
+
+### Android
+
+```xml
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 ```
 
 # Usage
@@ -111,8 +130,8 @@ this.mediaPicker.closeModal();
 | cameraText                   |  string   |   Camera    | change the camera button's text                                              |
 | galleryText                  |  string   |   Gallery   | change the gallery button's text                                             |
 | backgroundColor              |   color   |   #90a1fc   | change the modal's background color                                          |
-| cameraOnPress                | function  |   default   | set your own logic when camera is on pressed **(please check the example)**  |
-| galleryOnPress               | function  |   default   | set your own logic when gallery is on pressed **(please check the example)** |
+| onCameraPress                | function  |   default   | set your own logic when camera is on pressed **(please check the example)**  |
+| onGalleryPress               | function  |   default   | set your own logic when gallery is on pressed **(please check the example)** |
 | cameraIconName               |  string   |   camera    | change the camera's icon name                                                |
 | cameraIconType               |  string   | FontAwesome | change the camera's icon type                                                |
 | cameraIconColor              |   color   |   #fdfdfd   | change the camera's icon color                                               |

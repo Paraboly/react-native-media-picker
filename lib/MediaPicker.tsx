@@ -12,8 +12,6 @@ import { isIPhoneXFamily } from "@freakycoder/react-native-helpers";
 import ImagePicker, { Image } from "react-native-image-crop-picker";
 
 export interface IProps {
-  cameraOnPress?: (image: Image | Image[]) => void;
-  galleryOnPress?: (images: Image | Image[]) => void;
   IconComponent: any;
   multiple: boolean;
   cameraText: string;
@@ -31,9 +29,11 @@ export interface IProps {
   cameraButtonSize: number;
   galleryIconColor: string;
   galleryButtonSize: number;
+  compressImageQuality: number;
   cameraButtonBackgroundColor: string;
   galleryButtonBackgroundColor: string;
-  compressImageQuality: number;
+  onCameraPress?: (image: Image | Image[]) => void;
+  onGalleryPress?: (images: Image | Image[]) => void;
 }
 
 interface IState {}
@@ -53,12 +53,12 @@ export default class MediaPicker extends React.Component<IProps, IState> {
     cameraIconName: "camera",
     cameraIconColor: "#90a1fc",
     backgroundColor: "#90a1fc",
+    cameraIconType: "FontAwesome",
     cameraTextColor: "#fdfdfd",
-    galleryIconType: "Ionicons",
     galleryIconColor: "#90a1fc",
     galleryTextColor: "#fdfdfd",
-    galleryIconName: "md-photos",
-    cameraIconType: "FontAwesome",
+    galleryIconType: "MaterialIcons",
+    galleryIconName: "photo-size-select-actual",
     cameraButtonBackgroundColor: "#fdfdfd",
     galleryButtonBackgroundColor: "#fdfdfd",
     compressImageQuality: 0.8,
@@ -98,10 +98,10 @@ export default class MediaPicker extends React.Component<IProps, IState> {
     this.openCamera()
       .then(
         (image: any) =>
-          this.props.cameraOnPress && this.props.cameraOnPress(image)
+          this.props.onCameraPress && this.props.onCameraPress(image)
       )
       .catch(
-        (err: any) => this.props.cameraOnPress && this.props.cameraOnPress(err)
+        (err: any) => this.props.onCameraPress && this.props.onCameraPress(err)
       );
   };
 
@@ -109,11 +109,11 @@ export default class MediaPicker extends React.Component<IProps, IState> {
     this.openGallery()
       .then(
         (images: any) =>
-          this.props.galleryOnPress && this.props.galleryOnPress(images)
+          this.props.onGalleryPress && this.props.onGalleryPress(images)
       )
       .catch(
         (err: any) =>
-          this.props.galleryOnPress && this.props.galleryOnPress(err)
+          this.props.onGalleryPress && this.props.onGalleryPress(err)
       );
   };
 
