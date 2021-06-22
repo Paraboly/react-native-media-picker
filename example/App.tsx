@@ -102,7 +102,7 @@ class App extends React.Component<IProps, IState> {
           multiple
           compressImageQuality={0.5}
           ref={(ref) => (this.mediaPicker = ref)}
-          galleryOnPress={(images: any) => {
+          onGalleryPress={(images: any) => {
             this.setState({
               image: null,
               images: images.map((image: any) => {
@@ -115,7 +115,6 @@ class App extends React.Component<IProps, IState> {
                 };
               }),
             });
-
             // ? Single Image (Multiple = false)
             // this.setState({
             //   image: {
@@ -126,7 +125,7 @@ class App extends React.Component<IProps, IState> {
             //   }
             // });
           }}
-          cameraOnPress={(image: any) => {
+          onCameraPress={(image: any) => {
             Alert.alert(JSON.stringify(image));
             this.setState({ image });
           }}

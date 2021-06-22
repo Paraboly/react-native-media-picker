@@ -26,8 +26,6 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
@@ -63,18 +61,20 @@
 		<string>FontAwesome5_Brands.ttf</string>
 		<string>FontAwesome5_Regular.ttf</string>
 		<string>FontAwesome5_Solid.ttf</string>
-		<string>Fontisto.ttf</string>
 		<string>Foundation.ttf</string>
 		<string>Ionicons.ttf</string>
-		<string>MaterialCommunityIcons.ttf</string>
 		<string>MaterialIcons.ttf</string>
-		<string>Octicons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
+		<string>Octicons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Fontisto.ttf</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This library requires to access your photo gallery</string>
 	<key>NSCameraUsageDescription</key>
-	<string>This library requires to access your camera</string>
+	<string>This allows us to capture and use the the captured photo</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This allows us to show/pick a photo from your library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This allows us to show/pick a photo from your library</string>
 </dict>
 </plist>
