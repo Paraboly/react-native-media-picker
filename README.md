@@ -123,30 +123,32 @@ this.mediaPicker.closeModal();
 
 # Configuration - Props
 
-| Property                     |   Type    |   Default   | Description                                                                  |
-| ---------------------------- | :-------: | :---------: | ---------------------------------------------------------------------------- |
-| IconComponent                | component |    Icon     | set your own Icon component such as Icon from react-native-vector-icons      |
-| multiple                     |  boolean  |    true     | change the picking media's as single or multiple at once                     |
-| cameraText                   |  string   |   Camera    | change the camera button's text                                              |
-| galleryText                  |  string   |   Gallery   | change the gallery button's text                                             |
-| backgroundColor              |   color   |   #90a1fc   | change the modal's background color                                          |
-| onCameraPress                | function  |   default   | set your own logic when camera is on pressed **(please check the example)**  |
-| onGalleryPress               | function  |   default   | set your own logic when gallery is on pressed **(please check the example)** |
-| cameraIconName               |  string   |   camera    | change the camera's icon name                                                |
-| cameraIconType               |  string   | FontAwesome | change the camera's icon type                                                |
-| cameraIconColor              |   color   |   #fdfdfd   | change the camera's icon color                                               |
-| cameraIconSize               |  number   |     20      | change the camera's icon size                                                |
-| galleryIconName              |  string   |  md-photos  | change the gallery's icon name                                               |
-| galleryIconType              |  string   |  Ionicons   | change the gallery's icon type                                               |
-| galleryIconColor             |   color   |   #fdfdfd   | change the gallery's icon color                                              |
-| galleryIconSize              |  number   |     20      | change the gallery's icon size                                               |
-| cameraButtonBackgroundColor  |   color   |   #fdfdfd   | change the camera button's background color                                  |
-| galleryButtonBackgroundColor |   color   |   #fdfdfd   | change the gallery button's background color                                 |
-| cameraButtonSize             |  number   |     50      | change the camera button's whole size                                        |
-| galleryButtonSize            |  number   |     50      | change the gallery button's whole size                                       |
-| cameraTextColor              |   color   |   #fdfdfd   | change the camera button's text color                                        |
-| galleryTextColor             |   color   |   #fdfdfd   | change the gallery button's text color                                       |
-| compressImageQuality         |  number   |     0.5     | change the quality of your photo                                             |
+| Property                     |   Type    |   Default   | Description                                                                   |
+| ---------------------------- | :-------: | :---------: | ----------------------------------------------------------------------------- |
+| IconComponent                | component |    Icon     | set your own Icon component such as Icon from react-native-vector-icons       |
+| multiple                     |  boolean  |    true     | change the picking media's as single or multiple at once                      |
+| cameraText                   |  string   |   Camera    | change the camera button's text                                               |
+| galleryText                  |  string   |   Gallery   | change the gallery button's text                                              |
+| backgroundColor              |   color   |   #90a1fc   | change the modal's background color                                           |
+| onCameraPress                | function  |   default   | set your own logic when camera is on pressed **(please check the example)**   |
+| onGalleryPress               | function  |   default   | set your own logic when gallery is on pressed **(please check the example)**  |
+| cameraIconName               |  string   |   camera    | change the camera's icon name                                                 |
+| cameraIconType               |  string   | FontAwesome | change the camera's icon type                                                 |
+| cameraIconColor              |   color   |   #fdfdfd   | change the camera's icon color                                                |
+| cameraIconSize               |  number   |     20      | change the camera's icon size                                                 |
+| galleryIconName              |  string   |  md-photos  | change the gallery's icon name                                                |
+| galleryIconType              |  string   |  Ionicons   | change the gallery's icon type                                                |
+| galleryIconColor             |   color   |   #fdfdfd   | change the gallery's icon color                                               |
+| galleryIconSize              |  number   |     20      | change the gallery's icon size                                                |
+| cameraButtonBackgroundColor  |   color   |   #fdfdfd   | change the camera button's background color                                   |
+| galleryButtonBackgroundColor |   color   |   #fdfdfd   | change the gallery button's background color                                  |
+| cameraButtonSize             |  number   |     50      | change the camera button's whole size                                         |
+| galleryButtonSize            |  number   |     50      | change the gallery button's whole size                                        |
+| cameraTextColor              |   color   |   #fdfdfd   | change the camera button's text color                                         |
+| galleryTextColor             |   color   |   #fdfdfd   | change the gallery button's text color                                        |
+| compressImageQuality         |  number   |     0.5     | change the quality of your photo                                              |
+| onCameraButtonPressed        | function  |   default   | set instead of `react-native-image-crop-picker` library when preesing camera  |
+| onGalleryButtonPressed       | function  |   default   | set instead of `react-native-image-crop-picker` library when preesing gallery |
 
 ## Future Plans
 
