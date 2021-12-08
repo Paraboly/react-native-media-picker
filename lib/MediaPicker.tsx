@@ -34,6 +34,8 @@ export interface IProps {
   galleryButtonBackgroundColor: string;
   onCameraPress?: (image: Image | Image[]) => void;
   onGalleryPress?: (images: Image | Image[]) => void;
+  onCameraButtonPressed?: () => void;
+  onGalleryButtonPressed?: () => void;
 }
 
 interface IState {}
@@ -146,7 +148,9 @@ export default class MediaPicker extends React.Component<IProps, IState> {
                 styles.center,
                 _buttonStyle(cameraButtonSize, cameraButtonBackgroundColor),
               ]}
-              onPress={this.handleCameraPressed}
+              onPress={
+                this.props.onCameraButtonPressed || this.handleCameraPressed
+              }
             >
               <IconComponent
                 name={cameraIconName}
@@ -163,7 +167,9 @@ export default class MediaPicker extends React.Component<IProps, IState> {
                 styles.center,
                 _buttonStyle(galleryButtonSize, galleryButtonBackgroundColor),
               ]}
-              onPress={this.handleGalleryPressed}
+              onPress={
+                this.props.onGalleryButtonPressed || this.handleGalleryPressed
+              }
             >
               <IconComponent
                 name={galleryIconName}
